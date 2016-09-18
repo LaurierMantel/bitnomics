@@ -5,7 +5,7 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Bitnomics</h1>
+        <h1>Bitlytics</h1>
         <LiveTable />
       </div>
     );

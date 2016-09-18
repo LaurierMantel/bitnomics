@@ -40,7 +40,7 @@ var MainPage = function (_React$Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Bitnomics'
+          'Bitlytics'
         ),
         _react2.default.createElement(_LiveTable2.default, null)
       );
