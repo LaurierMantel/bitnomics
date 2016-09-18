@@ -2,13 +2,13 @@ import React from 'react';
 import roach from '../roach';
 export default React.createClass({
     getInitialState() {
-	return {
-	    rows: []
-	};
+    	return {
+    	    rows: []
+    	};
     },
 
     componentDidMount() {
-	this.getTransactions();
+    	this.getTransactions();
     },
 
     getTransactions() {
@@ -24,16 +24,16 @@ export default React.createClass({
     },
 
     render() {
-    	let rows = [];
-    	console.log(this.state.rows);
+	let rows = [];
+	console.log(this.state.rows);
 	for(var i = 0; i < this.state.rows.length; i++) {
-		rows.push(
+    		rows.push(
     		    <tr key={i}>
-                        <td>this.state.rows[i].hash</td>
-                        <td>this.state.rows[i].amount</td>
-                        <td>this.state.rows[i].publish_time</td>
-                    </tr>
-    		);
+                    <td>this.state.rows[i].hash</td>
+                    <td>this.state.rows[i].amount</td>
+                    <td>this.state.rows[i].publish_time</td>
+                </tr>
+        	);
     	}
         return (
             <div>
