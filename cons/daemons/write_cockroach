@@ -1,0 +1,62 @@
+#! /usr/bin/python
+import psycopg2
+import json
+from kafka import KafkaConsumer
+import datetime
+
+conn = psycopg2.connect(database='cockdb69', user='root', host='localhost', port='26257')
+
+cur = conn.cursor()
+
+consumer = KafkaConsumer('test3', bootstrap_servers='45.79.157.154:9092')
+
+for msg in consumer:
+	data = json.loads(msg.value)['data']
+	query = "INSERT INTO test_transactions (hash, version, lock_time, size, amount, fees, confirmations, pool, publish_time) " \
+		"VALUES ('%s', %d, %d, %d, %d, %d, %d, '%s', %d);" % (
+			data['hash'],
+			data['version'],
+			data['lock_time'],
+			data['size'],
+			data['amount'],
+			data['fees'],
+			data['confirmations'],
+			data['pool'],
+			msg.timestamp
+		)
+	print query
+	cur.execute(query)
+	conn.commit()
+
+	for input_obj in data['inputs']:
+
+		inputs_query = "INSERT INTO inputs (previous_transaction_hash, output_index, amount, script, addresses, hash) " \
+			"VALUES ('%s', %d, %d, '%s', '%s', '%s');" % (
+				input_obj['previous_transaction_hash'],
+				input_obj['output_index'],
+				input_obj['amount'],
+				input_obj['script'],
+				input_obj['addresses'][0],
+				data['hash']
+			)
+		print inputs_query
+		cur.execute(inputs_query)
+		conn.commit()
+	
+	for output in data['outputs']:
+
+		outputs_query = "INSERT INTO outputs (amount, spent, script, script_hex, script_type, addresses, hash) " \
+			"VALUES (%d, %s, '%s', '%s', '%s', '%s', '%s');" % (
+				output['amount'],
+				output['spent'],
+				output['script'],
+				output['script_hex'],
+				output['script_type'],
+				output['addresses'][0],
+				data['hash']
+			)
+		print outputs_query
+		cur.execute(outputs_query)
+		conn.commit()
+	
+
