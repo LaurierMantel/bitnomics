@@ -29,8 +29,9 @@ exports.getTransactions = function(cb) {
 	    client.query('SELECT * from test_transactions limit 100', function(err, result) {
 	      	done();
 	      	if(err) {
-	      	  	return cb('error running query');
+	      	    return cb('error running query');
 	      	}
+		console.log('hit em with the callback');
 	      	cb(result.rows);
 	    });
 	});

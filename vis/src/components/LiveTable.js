@@ -1,31 +1,38 @@
 import React from 'react';
 import roach from '../roach';
-export default class LiveTable extends React.Component {
-
+export default React.createClass({
     getInitialState() {
-        rows: []
-    }
+	return {
+	    rows: []
+	};
+    },
+
+    componentDidMount() {
+	this.getTransactions();
+    },
 
     getTransactions() {
+	console.log('lets get it');
         roach.getTransactions(function(err, rows) {
             if (err) {
                 console.log(err);
                 return;
             }
+	    console.log('dofibsinoniofsni', rows);
             this.setState({rows:rows});
         });
-    }
+    },
 
     render() {
-        this.getTransactions();
-    	var rows = [];
-    	for(var i = 0; i < this.state.rows.length; i++) {
-    		rows.push(
-    			<tr key={i}>
-                    <td>this.state.rows[i].hash</td>
-                    <td>this.state.rows[i].amount</td>
-                    <td>this.state.rows[i].publish_time</td>
-                </tr>
+    	let rows = [];
+    	console.log(this.state.rows);
+	for(var i = 0; i < this.state.rows.length; i++) {
+		rows.push(
+    		    <tr key={i}>
+                        <td>this.state.rows[i].hash</td>
+                        <td>this.state.rows[i].amount</td>
+                        <td>this.state.rows[i].publish_time</td>
+                    </tr>
     		);
     	}
         return (
@@ -43,4 +50,4 @@ export default class LiveTable extends React.Component {
             </div>
         );
     }
-}
+});
