@@ -1,11 +1,9 @@
 import React from 'react';
-import utils from '../utils';
+import roach from '../roach';
 export default class LiveTable extends React.Component {
 
     getTransactions() {
-        // utils.getTransactions(function(data) {
-        //     console.log(data);
-        // });
+        roach.getTransactions();
     }
 
     render() {

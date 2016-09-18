@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _utils = require('../utils');
+var _roach = require('../roach');
 
-var _utils2 = _interopRequireDefault(_utils);
+var _roach2 = _interopRequireDefault(_roach);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,88 +23,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var LiveTable = function (_React$Component) {
-<<<<<<< HEAD
-  _inherits(LiveTable, _React$Component);
-
-  function LiveTable() {
-    _classCallCheck(this, LiveTable);
-
-    return _possibleConstructorReturn(this, (LiveTable.__proto__ || Object.getPrototypeOf(LiveTable)).apply(this, arguments));
-  }
-
-  _createClass(LiveTable, [{
-    key: 'render',
-    value: function render() {
-      var rows = [];
-      for (var i = 0; i < 10; i++) {
-        rows.push(_react2.default.createElement(
-          'tr',
-          { key: i },
-          _react2.default.createElement(
-            'td',
-            null,
-            'blah'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            'blue'
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            'bleep'
-          )
-        ));
-      }
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'table',
-          null,
-          _react2.default.createElement(
-            'tbody',
-            null,
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'th',
-                null,
-                'Email Address'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'HTNNN'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'dafonisd '
-              )
-            ),
-            rows
-          )
-        )
-      );
-=======
     _inherits(LiveTable, _React$Component);
 
     function LiveTable() {
         _classCallCheck(this, LiveTable);
 
         return _possibleConstructorReturn(this, (LiveTable.__proto__ || Object.getPrototypeOf(LiveTable)).apply(this, arguments));
->>>>>>> 956841aa4a242fe16b3586e8cc0ae38f9d413782
     }
 
     _createClass(LiveTable, [{
         key: 'getTransactions',
         value: function getTransactions() {
-            // utils.getTransactions(function(data) {
-            //     console.log(data);
-            // });
+            _roach2.default.getTransactions();
         }
     }, {
         key: 'render',

@@ -5,9 +5,9 @@
   "main": "lib/server.js",
   "scripts": {
     "build:prod": "nodejs node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins transform-react-jsx --presets es2015",
-    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins transform-react-jsx --presets es2015",
+    "build": "node node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins transform-react-jsx --presets es2015",
     "bundle:prod": "nodejs node_modules/browserify/bin/cmd.js lib/client.js -o public/js/bundle.js",
-    "bundle": "./node_modules/browserify/bin/cmd.js lib/client.js -o public/js/bundle.js",
+    "bundle": "node node_modules/browserify/bin/cmd.js lib/client.js -o public/js/bundle.js",
     "start:prod": "npm run build:prod && npm run bundle:prod && nodejs lib/server.js",
     "start": "npm run build && npm run bundle && node lib/server.js"
   },
@@ -16,9 +16,10 @@
   "dependencies": {
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "pg": "^6.1.0",
+    "pg-native": "^1.10.0",
     "react": "^0.14.2",
-    "react-dom": "^0.14.2",
-    "roachjs": "^0.2.20"
+    "react-dom": "^0.14.2"
   },
   "devDependencies": {
     "browserify": "^12.0.1",

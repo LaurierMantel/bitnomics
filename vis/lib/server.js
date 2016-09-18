@@ -33,6 +33,10 @@ app.get('/', function (req, res) {
   });
 });
 
+// app.get('/transactions', function(req, res) {
+
+// });
+
 // Start server
 var server = app.listen(1337, function () {
   var host = server.address().address;

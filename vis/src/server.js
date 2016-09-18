@@ -18,6 +18,10 @@ app.get('/', function (req, res) {
   });
 });
 
+// app.get('/transactions', function(req, res) {
+	
+// });
+
 // Start server
 let server = app.listen(1337, function () {
   let host = server.address().address;
