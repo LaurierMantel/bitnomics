@@ -1,0 +1,14 @@
+#!/usr/bin/ruby
+puts "Running setup_kafka.rb"
+
+system "/root/htn/confluent/bin/zookeeper-server-start /root/htn/confluent/etc/kafka/zookeeper.properties &"
+
+sleep(1)
+
+puts "Zookeeper running?"
+
+system "/root/htn/confluent/bin/kafka-server-start /root/htn/confluent/etc/kafka/server.properties &"
+
+sleep(1)
+
+puts "hopefully kafka is running"
