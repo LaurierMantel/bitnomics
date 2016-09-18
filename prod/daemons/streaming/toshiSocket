@@ -5,7 +5,7 @@ import time
 
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 def on_message(ws, message):
-    producer.send('test1', message)
+    producer.send('test3', message)
     print message
 
 def on_error(ws, error):
