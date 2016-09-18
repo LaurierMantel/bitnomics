@@ -8,17 +8,18 @@ export default React.createClass({
     },
 
     componentDidMount() {
+        console.log('fuck');
     	this.getTransactions();
     },
 
     getTransactions() {
-	console.log('lets get it');
+	   console.log('lets get it');
         roach.getTransactions(function(err, rows) {
             if (err) {
                 console.log(err);
                 return;
             }
-	    console.log('dofibsinoniofsni', rows);
+	        console.log('dofibsinoniofsni', rows);
             this.setState({rows:rows});
         });
     },
