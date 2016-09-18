@@ -2,20 +2,30 @@ import React from 'react';
 import roach from '../roach';
 export default class LiveTable extends React.Component {
 
+    getInitialState() {
+        rows: []
+    }
+
     getTransactions() {
-        roach.getTransactions();
+        roach.getTransactions(function(err, rows) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            this.setState({rows:rows});
+        });
     }
 
     render() {
         this.getTransactions();
     	var rows = [];
-    	for(var i = 0; i < 10; i++) {
+    	for(var i = 0; i < this.state.rows.length; i++) {
     		rows.push(
     			<tr key={i}>
-                  <td>blah</td>
-                  <td>blue</td>
-                  <td>bleep</td>
-              </tr>
+                    <td>this.state.rows[i].hash</td>
+                    <td>this.state.rows[i].amount</td>
+                    <td>this.state.rows[i].publish_time</td>
+                </tr>
     		);
     	}
         return (
@@ -23,9 +33,9 @@ export default class LiveTable extends React.Component {
               <table className='bit-table'>
                   <tbody>
                       <tr>
-                        <th>Email Address</th>
-                        <th>HTNNN</th>
-                        <th>dafonisd </th>
+                        <th>Hash</th>
+                        <th>Amount</th>
+                        <th>Time of Transaction</th>
                       </tr>
                       {rows}
                   </tbody>

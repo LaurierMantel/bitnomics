@@ -4,7 +4,7 @@ var config = {
   user: 'root', //env var: PGUSER
   database: 'cockdb69', //env var: PGDATABASE
   password: 'Hack123', //env var: PGPASSWORD
-  host: '45.79.165.171', // Server hosting the postgres database
+  host: 'localhost', // Server hosting the postgres database
   port: 26257, //env var: PGPORT
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
@@ -21,18 +21,17 @@ pool.on('error', function (err, client) {
   console.error('idle client error', err.message, err.stack)
 });
 
-exports.getTransactions = function() {
+exports.getTransactions = function(cb) {
 	pool.connect(function(err, client, done) {
-	  if(err) {
-	    return console.error('error fetching client from pool', err);
-	  }
-	  client.query('SELECT * from test_transactions', function(err, result) {
-	    done();
-
 	    if(err) {
-	      return console.error('error running query', err);
+	      	return cb('error fetching client from pool');
 	    }
-	    console.log(result.rows[0].number);
-	  });
+	    client.query('SELECT * from test_transactions limit 100', function(err, result) {
+	      	done();
+	      	if(err) {
+	      	  	return cb('error running query');
+	      	}
+	      	cb(result.rows);
+	    });
 	});
 };
