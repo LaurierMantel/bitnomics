@@ -1,0 +1,5 @@
+#!/usr/bin/ruby
+
+system('cockroach start --background')
+
+
