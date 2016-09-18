@@ -4,8 +4,11 @@
   "description": "Real-time bitcoin analytics dashboard",
   "main": "lib/server.js",
   "scripts": {
+    "build:prod": "nodejs node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins transform-react-jsx --presets es2015",
     "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib --plugins transform-react-jsx --presets es2015",
+    "bundle:prod": "nodejs node_modules/browserify/bin/cmd.js lib/client.js -o public/js/bundle.js",
     "bundle": "./node_modules/browserify/bin/cmd.js lib/client.js -o public/js/bundle.js",
+    "start:prod": "npm run build:prod && npm run bundle:prod && nodejs lib/server.js",
     "start": "npm run build && npm run bundle && node lib/server.js"
   },
   "author": "Nolan Dey and Laurier Mantel",

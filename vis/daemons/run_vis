@@ -1,0 +1,6 @@
+#!/usr/bin/ruby
+puts "Running run_vis.rb"
+
+system "/usr/bin/npm run start:prod &"
+
+puts "vis app running?"

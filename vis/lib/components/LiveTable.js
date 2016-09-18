@@ -34,7 +34,7 @@ var LiveTable = function (_React$Component) {
       for (var i = 0; i < 10; i++) {
         rows.push(_react2.default.createElement(
           'tr',
-          { id: i },
+          { key: i },
           _react2.default.createElement(
             'td',
             null,
