@@ -12,4 +12,4 @@ Some cool features:
 - CockroachDB worked quite well - it has a Postgresql interface
 - Kafka also worked quite as an MQ and was very reliable
 
-Contributors: [lauriermantel](http://lauriermantel.com) and [Nolan Dey](http://ndey96.github.io)
+Contributors: [Laurier Mantel](http://lauriermantel.com) and [Nolan Dey](http://ndey96.github.io)
