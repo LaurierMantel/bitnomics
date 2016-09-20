@@ -1,6 +1,6 @@
-# bitnomics 
+# Bitnomics 
 
-bitnomics is a real time data streaming data pipeline using Apache Kafka and CockroachDB.  It was built at Hack the North and deployed on Linode.  The goal was to get real time economic information on the Bitcoin blockchain to gain insights at the macronecomic level on bitcoin.  
+Bitnomics is a real time data streaming data pipeline using Apache Kafka and CockroachDB.  It was built at Hack the North and deployed on Linode.  The goal was to get real time economic information on the Bitcoin blockchain to gain insights at the macronecomic level on bitcoin.  
 
 The pipeline works roughly as follows:
 - Data streams from a Coinbase websocket into a Kafka topic using a Python Kafka producer
