@@ -1,4 +1,5 @@
 node_modules/
 bundle.js
 *.log
-cockroach_data/
+/cockroach_data/
+*.key
